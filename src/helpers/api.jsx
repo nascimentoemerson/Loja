@@ -11,6 +11,6 @@ const CadastroContext = {
 };
 
 export const Api = {
-  baseUrl: "https://bejewelled-cucurucho-ba6eaa.netlify.app",
-  ...PaletaContext,
+  baseUrl: "http://127.0.0.1:5173",
+  ...CadastroContext,
 };

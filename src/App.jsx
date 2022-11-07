@@ -14,6 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import ModalComp from "./components/ModalComp";
+import { cadastroService } from "./services/CadastroService";
 
 const App = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -33,6 +34,7 @@ const App = () => {
     setData(db_costumer);
   }, [setData]);
 
+ 
   const handleRemove = (email) => {
     const newArray = data.filter((item) => item.email !== email);
 
@@ -40,6 +42,15 @@ const App = () => {
 
     localStorage.setItem("cad_cliente", JSON.stringify(newArray));
   };
+
+  const getLista = async () => {
+    const response = await cadastroService.getLista();
+    setData(response);
+  };
+
+  useEffect(() => {
+    getLista
+  },[])
 
   return (
     <Flex
